@@ -9,7 +9,7 @@ The python script for inference is also provided.
 
 prerequisites: Docker (https://docs.docker.com/engine/install/) and CUDA drivers (https://docs.nvidia.com/cuda/cuda-installation-guide-linux). \
 \
-The folder should be organized like indicated:
+The folder should be organized as indicated:
 
     .
     ├── Dockerfile
