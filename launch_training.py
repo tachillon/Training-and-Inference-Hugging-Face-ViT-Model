@@ -1,11 +1,19 @@
 import os
+import shutil
 import subprocess
 
 current_working_dir = os.getcwd()
-print("Current working directory: " + current_working_dir)
+print("\nCurrent working directory: " + current_working_dir)
+
+# Delete split_dataset folder if it exists
+print("\nDeleting split_dataset folder if it exists...")
+cmd_delete_split_dataset = "docker run --rm -it --gpus all --ipc=host -w /tmp -v " + current_working_dir + ":/tmp pytorch:latest rm -rf dataset_split"
+error_code = subprocess.call(cmd_delete_split_dataset, shell=True)
+if error_code != 0:
+    print("Deletion of dataset_split folder failed!")
 
 # Build the docker image
-print("\nBuilding docker image...\n")
+print("Building docker image...\n")
 cmd_build_docker = "docker build -t pytorch:latest ."
 error_code = subprocess.call(cmd_build_docker, shell=True)
 if error_code != 0:
